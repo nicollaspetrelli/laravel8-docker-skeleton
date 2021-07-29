@@ -10,6 +10,7 @@
 ### How to use:
 
 - Clone this repository
+- In docker-compose.yml change `appname` to your app or network name
 - Run docker-compose up
 - Create or clone .env by .env.example
 - Verify if docker has access to files

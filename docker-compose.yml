@@ -1,4 +1,4 @@
-version: "3.1"
+version: "3.9"
 services:
 
     postgres:
@@ -10,9 +10,13 @@ services:
       environment:
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgre
-        - POSTGRES_DB=default
+        - POSTGRES_DB=tododb
       ports:
         - "5432:5432"
+      networks:
+        appname:
+          aliases: 
+            - "db.appname"
 
     webserver:
       image: nginx:alpine
@@ -23,6 +27,8 @@ services:
           - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       ports:
        - "8081:80"
+      networks:
+        appname:
 
     php-fpm:
       build: docker/php-fpm
@@ -31,3 +37,8 @@ services:
       volumes:
         - .:/app
         - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+      networks:
+        appname:
+
+networks:
+  appname:
