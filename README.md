@@ -1,5 +1,7 @@
 ## Laravel 8 Docker-compose Skeleton
 
+Repository to clone and starting make something awesome with laravel!
+
 ### Containers:
 * PHP-FPM 7.2
 * NGINX ALPINE
